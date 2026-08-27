@@ -7,6 +7,11 @@ class Vastai < Formula
   sha256 "370a005d4510305b78109e065f03372eb6f8a4caf217da85a5008cbb4ae08396"
   license "MIT"
 
+  bottle do
+    root_url "https://github.com/Kilo-Loco/homebrew-tap/releases/download/vastai-1.5.6"
+    sha256 cellar: :any, arm64_tahoe: "a70cb46fb173303c9b211325d40aa8b1ace5168729198cbe127f17afb9604bf1"
+  end
+
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "rust" => :build
