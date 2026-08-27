@@ -18,13 +18,16 @@ Use the full name. `brew tap` plus `brew install vastai` fails with
   installer, neither of which applies here.
 - If you previously ran `install.sh`, its `~/.local/bin/vastai` will shadow this
   one. Run `vastai uninstall` first, or check with `which -a vastai`.
-- **Apple silicon on macOS 26** gets a prebuilt bottle and installs in seconds.
-  That is the only bottle published, so every other target falls back to
-  building all 39 resources from source, which pulls ~2GB of toolchain first
-  (`cryptography` needs Rust, `pillow` needs six image libraries). Budget
-  several minutes there.
-- Intel macOS and older macOS versions are untested source builds. Linux does
-  not build at all right now: `pillow` fails to compile.
+- **Apple silicon on macOS 26 or 15** gets a prebuilt bottle and installs in
+  seconds. Anything else builds all 39 resources from source, which pulls ~2GB
+  of toolchain first (`cryptography` needs Rust, `pillow` needs six image
+  libraries). Budget several minutes there.
+- Intel macOS cannot be bottled: homebrew-core no longer ships Intel bottles
+  for part of the dependency chain, so it is an untested source build.
+- Linux is unsupported (`depends_on :macos`): `pillow`'s setup.py needs a
+  `*_ROOT` hint per native library there, and after two fix rounds (zlib, then
+  jpeg) the chase was stopped. Linux users should use `pip install vastai` or
+  the upstream installer.
 
 Unofficial and unaffiliated with Vast.ai. Packages their MIT-licensed CLI
 unmodified from the published PyPI sdist. Formula is [MIT](LICENSE).
