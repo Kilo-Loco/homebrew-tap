@@ -3,8 +3,8 @@ class Vastai < Formula
 
   desc "CLI and SDK for the Vast.ai GPU cloud"
   homepage "https://github.com/vast-ai/vast-cli"
-  url "https://files.pythonhosted.org/packages/4c/21/5e1e50ed67c5de6b0e44ea68f83922c49751d4fb1f18c4945a01ee56abb6/vastai-1.5.5.tar.gz"
-  sha256 "cd1f7b50dff7277a2119b2240a752a2ab785d818ae33815771c2a210dff78d4e"
+  url "https://files.pythonhosted.org/packages/84/d6/166c8792187cd0e517cb6f49d689d08e1fd6a145ff3138bf4237daf47534/vastai-1.5.6.tar.gz"
+  sha256 "370a005d4510305b78109e065f03372eb6f8a4caf217da85a5008cbb4ae08396"
   license "MIT"
 
   depends_on "cmake" => :build
