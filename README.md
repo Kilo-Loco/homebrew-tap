@@ -81,3 +81,11 @@ silicon.
 
 Verified on macOS arm64 (Tahoe, Apple silicon). Not yet verified on Intel macOS
 or on Linux.
+
+## License
+
+The formula in this repository is [MIT licensed](LICENSE).
+
+The packaged software is separate: `vast-cli` is MIT licensed by Vast.ai and is
+installed unmodified from their published PyPI sdist. This tap claims no
+ownership of it.
