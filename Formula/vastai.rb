@@ -232,6 +232,10 @@ class Vastai < Formula
     # locate Homebrew's OpenSSL on Linux, even with it on PKG_CONFIG_PATH.
     ENV["OPENSSL_DIR"] = formula_opt_prefix("openssl@3")
 
+    # pillow's setup.py does its own header search rather than honouring
+    # superenv, so hand it the zlib prefix directly on Linux.
+    ENV["ZLIB_ROOT"] = formula_opt_prefix("zlib-ng-compat") if OS.linux?
+
     virtualenv_install_with_resources
   end
 
