@@ -26,6 +26,12 @@ class Vastai < Formula
   depends_on "python@3.13"
   depends_on "webp"
 
+  on_linux do
+    # pillow's setup.py needs zlib headers; on Linux they come from Homebrew's
+    # zlib-ng-compat rather than the system.
+    depends_on "zlib-ng-compat"
+  end
+
   resource "aiodns" do
     url "https://files.pythonhosted.org/packages/85/2f/9d1ee4f937addda60220f47925dac6c6b3782f6851fd578987284a8d2491/aiodns-3.6.1.tar.gz"
     sha256 "b0e9ce98718a5b8f7ca8cd16fc393163374bc2412236b91f6c851d066e3324b6"
