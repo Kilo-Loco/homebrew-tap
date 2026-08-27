@@ -6,11 +6,21 @@ Homebrew formula for the [Vast.ai CLI](https://github.com/vast-ai/vast-cli).
 brew install Kilo-Loco/tap/vastai
 ```
 
-Or tap once and install by name:
+Use the fully-qualified name. Homebrew trusts a third-party formula you name
+explicitly, so that one command is all you need.
+
+Tapping first and installing by the bare name does *not* work on its own:
 
 ```bash
 brew tap Kilo-Loco/tap
 brew install vastai
+# Error: Refusing to load formula kilo-loco/tap/vastai from untrusted tap
+```
+
+If you prefer that form, trust the tap once first:
+
+```bash
+brew trust kilo-loco/tap
 ```
 
 ## Why this exists
