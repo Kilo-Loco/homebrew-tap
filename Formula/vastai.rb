@@ -217,6 +217,10 @@ class Vastai < Formula
   end
 
   def install
+    # cryptography builds a Rust extension whose openssl-sys build script cannot
+    # locate Homebrew's OpenSSL on Linux, even with it on PKG_CONFIG_PATH.
+    ENV["OPENSSL_DIR"] = Formula["openssl@3"].opt_prefix
+
     virtualenv_install_with_resources
   end
 
