@@ -18,10 +18,11 @@ Use the full name. `brew tap` plus `brew install vastai` fails with
   installer, neither of which applies here.
 - If you previously ran `install.sh`, its `~/.local/bin/vastai` will shadow this
   one. Run `vastai uninstall` first, or check with `which -a vastai`.
-- First install builds 39 resources from source and pulls ~2GB of build
-  dependencies (`cryptography` needs Rust, `pillow` needs six image libraries).
-  Expect several minutes.
-- Verified on macOS arm64 only.
+- Apple silicon installs a prebuilt bottle in seconds. Any other platform builds
+  all 39 resources from source and pulls ~2GB of toolchain first (`cryptography`
+  needs Rust, `pillow` needs six image libraries), so expect several minutes.
+- Bottled and verified for Apple silicon macOS only. Linux does not currently
+  build; Intel macOS is untested.
 
 Unofficial and unaffiliated with Vast.ai. Packages their MIT-licensed CLI
 unmodified from the published PyPI sdist. Formula is [MIT](LICENSE).
