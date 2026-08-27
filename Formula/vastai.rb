@@ -15,22 +15,18 @@ class Vastai < Formula
   depends_on "cmake" => :build
   depends_on "ninja" => :build
   depends_on "rust" => :build
+  # pillow needs per-library *_ROOT hints on Linux; two rounds cleared zlib, hit jpeg next
   depends_on "freetype"
   depends_on "jpeg-turbo"
   depends_on "libtiff"
   depends_on "libxml2"
   depends_on "libxslt"
   depends_on "little-cms2"
+  depends_on :macos
   depends_on "openjpeg"
   depends_on "openssl@3"
   depends_on "python@3.13"
   depends_on "webp"
-
-  on_linux do
-    # pillow's setup.py needs zlib headers; on Linux they come from Homebrew's
-    # zlib-ng-compat rather than the system.
-    depends_on "zlib-ng-compat"
-  end
 
   resource "aiodns" do
     url "https://files.pythonhosted.org/packages/85/2f/9d1ee4f937addda60220f47925dac6c6b3782f6851fd578987284a8d2491/aiodns-3.6.1.tar.gz"
@@ -231,10 +227,6 @@ class Vastai < Formula
     # cryptography builds a Rust extension whose openssl-sys build script cannot
     # locate Homebrew's OpenSSL on Linux, even with it on PKG_CONFIG_PATH.
     ENV["OPENSSL_DIR"] = formula_opt_prefix("openssl@3")
-
-    # pillow's setup.py does its own header search rather than honouring
-    # superenv, so hand it the zlib prefix directly on Linux.
-    ENV["ZLIB_ROOT"] = formula_opt_prefix("zlib-ng-compat") if OS.linux?
 
     virtualenv_install_with_resources
   end
